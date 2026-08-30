@@ -5,8 +5,9 @@
  */
 
 const caminhoCookies = path.join(__dirname, 'cookies.txt');
-if (process.env.IG_COOKIES_CONTENT && !fs.existsSync(caminhoCookies)) {
-    fs.writeFileSync(caminhoCookies, process.env.IG_COOKIES_CONTENT);
+if (process.env.IG_COOKIES_B64 && !fs.existsSync(caminhoCookies)) {
+    const bufferCookies = Buffer.from(process.env.IG_COOKIES_B64, 'base64');
+    fs.writeFileSync(caminhoCookies, bufferCookies);
 }
 
 const express = require('express');
