@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     ffmpeg \
     curl \
+    && ln -s /usr/bin/python3 /usr/bin/python \
     && pip install --no-cache-dir --upgrade --break-system-packages yt-dlp \
     && rm -rf /var/lib/apt/lists/*
 
