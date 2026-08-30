@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum DL | Universal Media Downloader</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="quantum-glow"></div>
+    
+    <main class="container">
+        <header>
+            <div class="logo-badge">
+                <i class="fa-solid fa-bolt"></i> Quantum DL
+            </div>
+            <h1>Baixe Mídia Sem Limites</h1>
+            <p>Insira o link do YouTube, TikTok ou Instagram para extração instantânea.</p>
+        </header>
+
+        <div class="converter-box">
+            <div class="platforms-bar">
+                <button class="plat-btn active" onclick="setPlatform('youtube', this)">
+                    <i class="fa-brands fa-youtube" style="color: #ef4444;"></i> YouTube
+                </button>
+                <button class="plat-btn" onclick="setPlatform('tiktok', this)">
+                    <i class="fa-brands fa-tiktok" style="color: #38bdf8;"></i> TikTok
+                </button>
+                <button class="plat-btn" onclick="setPlatform('instagram', this)">
+                    <i class="fa-brands fa-instagram" style="color: #ec4899;"></i> Instagram
+                </button>
+            </div>
+
+            <div class="input-section" id="inputSection">
+                <div class="input-group">
+                    <i class="fa-solid fa-link"></i>
+                    <input type="text" id="urlInput" placeholder="Cole o link do YouTube ou Playlist aqui..." autocomplete="off">
+                </div>
+                <button id="fetchBtn" onclick="fetchMediaInfo()">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Analisar Mídia
+                </button>
+            </div>
+
+            <div class="preview-section hidden" id="previewSection">
+                <div class="media-card">
+                    <img id="mediaThumb" src="" alt="Thumbnail">
+                    <div class="media-details">
+                        <span id="mediaTypeBadge" class="badge">Vídeo Único</span>
+                        <h3 id="mediaTitle">Carregando título...</h3>
+                    </div>
+                </div>
+
+                <div class="quality-selector" id="qualityWrapper">
+                    <label><i class="fa-solid fa-sliders"></i> Formato de Saída:</label>
+                    <select id="qualitySelect">
+                        <optgroup label="Vídeo (MP4)">
+                            <option value="mp4-1080">MP4 - 1080p Full HD (~50 a 100 MB)</option>
+                            <option value="mp4-720">MP4 - 720p HD (~20 a 40 MB)</option>
+                            <option value="mp4-480">MP4 - 480p SD (~10 a 20 MB)</option>
+                        </optgroup>
+                        <optgroup label="Áudio (MP3)">
+                            <option value="mp3-320">MP3 - Alta Qualidade 320kbps (~8 a 12 MB)</option>
+                            <option value="mp3-192">MP3 - Qualidade Padrão 192kbps (~4 a 7 MB)</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="downloadBtn" class="btn-primary" onclick="startDownload()">
+                        <i class="fa-solid fa-cloud-arrow-down"></i> Baixar Arquivo Agora
+                    </button>
+                    <button class="btn-secondary" onclick="resetForm()">
+                        <i class="fa-solid fa-rotate-left"></i> Inserir Outro Link
+                    </button>
+                </div>
+            </div>
+
+            <div id="statusBox" class="status hidden"></div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
