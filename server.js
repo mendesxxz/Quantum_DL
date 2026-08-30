@@ -4,6 +4,11 @@
  * ============================================================================
  */
 
+const caminhoCookies = path.join(__dirname, 'cookies.txt');
+if (process.env.IG_COOKIES_CONTENT && !fs.existsSync(caminhoCookies)) {
+    fs.writeFileSync(caminhoCookies, process.env.IG_COOKIES_CONTENT);
+}
+
 const express = require('express');
 const youtubedl = require('yt-dlp-exec');
 const ffmpegPath = require('ffmpeg-static');
